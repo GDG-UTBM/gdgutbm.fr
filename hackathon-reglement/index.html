@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GDG UTBM — Règlement Officiel · Hackathon Innovation 2026</title>
+  <meta name="description" content="Règlement Officiel — Hackathon Innovation 2026 (Data · Cloud · XR) — GDG UTBM" />
+  <style>
+    :root{
+      --bg:#0b0f16;
+      --card:#0f1522;
+      --card2:#0c1220;
+      --text:#e8eefc;
+      --muted:#a9b4cf;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius:18px;
+      --blue:#4285F4; --green:#34A853; --yellow:#FBBC05; --red:#EA4335;
+      --link:#8ab4ff;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(66,133,244,.18), transparent 60%),
+        radial-gradient(900px 550px at 85% 10%, rgba(52,168,83,.14), transparent 55%),
+        radial-gradient(900px 550px at 70% 90%, rgba(251,188,5,.10), transparent 55%),
+        radial-gradient(1100px 650px at 20% 95%, rgba(234,67,53,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1120px; margin:0 auto; padding:28px 18px 80px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:14px 16px; border:1px solid var(--line); border-radius:22px;
+      background: rgba(10,14,22,.55); backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; align-items:center; gap:14px}
+    .stripes{display:flex; gap:6px; align-items:center}
+    .stripe{width:10px; height:34px; border-radius:8px}
+    .stripe.b{background:var(--blue)}
+    .stripe.g{background:var(--green)}
+    .stripe.y{background:var(--yellow)}
+    .stripe.r{background:var(--red)}
+    .brandtext{line-height:1.15}
+    .brandtext .kicker{font-size:12px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase}
+    .brandtext .title{font-size:16px; font-weight:800}
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px; border-radius:14px; border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text); font-weight:700; font-size:13px;
+      transition:.15s transform ease, .15s background ease, .15s border-color ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); text-decoration:none}
+    .btn.primary{background: rgba(66,133,244,.18); border-color: rgba(66,133,244,.45)}
+    .pill{
+      font-family:var(--mono); font-size:12px; color:var(--muted);
+      padding:8px 10px; border-radius:999px; border:1px solid var(--line);
+      background: rgba(0,0,0,.15);
+      white-space:nowrap;
+    }
+
+    .hero{margin-top:18px; display:grid; grid-template-columns: 1.35fr .65fr; gap:16px}
+    @media (max-width: 980px){ .hero{grid-template-columns:1fr} }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(15,21,34,.7);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroMain{padding:22px 22px 18px}
+    .h1{font-size:34px; margin:4px 0 10px; letter-spacing:-.02em}
+    .sub{color:var(--muted); font-size:15px; line-height:1.55; margin:0}
+    .meta{
+      margin-top:16px; display:flex; flex-wrap:wrap; gap:10px
+    }
+    .meta .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--line); background: rgba(0,0,0,.14);
+      color: var(--muted); font-size:12px;
+    }
+    .dot{width:8px; height:8px; border-radius:99px; background:rgba(255,255,255,.3)}
+    .heroSide{padding:18px}
+    .sideTitle{font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin:0 0 10px}
+    .sideBox{
+      border:1px solid var(--line); border-radius:16px; padding:12px;
+      background: rgba(0,0,0,.12);
+    }
+    .sideBox .row{display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid var(--line)}
+    .sideBox .row:last-child{border-bottom:none}
+    .sideBox .k{color:var(--muted); font-size:12px}
+    .sideBox .v{font-weight:800; font-size:12px; font-family:var(--mono)}
+    .callout{
+      margin-top:12px; padding:12px; border-radius:16px;
+      border:1px solid rgba(66,133,244,.35);
+      background: rgba(66,133,244,.10);
+      color: var(--muted); font-size:13px; line-height:1.5;
+    }
+
+    .content{margin-top:16px; display:grid; grid-template-columns: 320px 1fr; gap:16px}
+    @media (max-width: 980px){ .content{grid-template-columns:1fr} }
+
+    .toc{
+      position: sticky; top: 16px;
+      align-self:start;
+      padding:14px;
+    }
+    .toc h3{
+      margin:0 0 10px; font-size:12px; color:var(--muted);
+      text-transform:uppercase; letter-spacing:.08em;
+    }
+    .toc a{
+      display:block; padding:10px 10px; border-radius:12px;
+      border:1px solid transparent;
+      color: var(--text);
+      background: transparent;
+      font-size:13px; font-weight:700;
+    }
+    .toc a span{color:var(--muted); font-weight:600}
+    .toc a:hover{
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+    }
+
+    .doc{padding:18px}
+    section{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(0,0,0,.10);
+      padding:16px 16px 14px;
+      margin-bottom:12px;
+    }
+    section h2{
+      margin:0 0 8px;
+      font-size:18px; letter-spacing:-.01em;
+      display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+    }
+    .secno{
+      font-family:var(--mono);
+      font-weight:900;
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      background: rgba(0,0,0,.18);
+    }
+    p{margin:8px 0; color:var(--muted); line-height:1.65; font-size:14px}
+    ul{margin:8px 0 0 18px; color:var(--muted); line-height:1.65; font-size:14px}
+    li{margin:6px 0}
+    .hr{height:1px; background:var(--line); margin:12px 0}
+    .note{
+      margin-top:10px;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(251,188,5,.35);
+      background: rgba(251,188,5,.08);
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .footer{
+      margin-top:16px;
+      padding:14px 18px;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(15,21,34,.6);
+      color: var(--muted);
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    }
+    .small{font-size:12px}
+    .mono{font-family:var(--mono)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Top bar -->
+    <div class="topbar">
+      <div class="brand">
+        <div class="stripes" aria-hidden="true">
+          <div class="stripe b"></div>
+          <div class="stripe g"></div>
+          <div class="stripe y"></div>
+          <div class="stripe r"></div>
+        </div>
+        <div class="brandtext">
+          <div class="kicker">Google Developer Group</div>
+          <div class="title">GDG UTBM</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <span class="pill">Innovation Framework Document</span>
+        <a class="btn primary" href="./reglement-2026.pdf" target="_blank" rel="noopener">📄 Télécharger le PDF</a>
+        <a class="btn" href="mailto:contact@gdgutbm.fr">✉️ contact@gdgutbm.fr</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="card heroMain">
+        <div class="pill mono">Règlement Officiel</div>
+        <h1 class="h1">Hackathon Innovation 2026</h1>
+        <p class="sub">
+          Cadre de collaboration — <strong>Data • Cloud • XR</strong><br/>
+          Document conforme — GDG UTBM. Périmètre : <strong>Mars – Juin 2026</strong>. Clôture : <strong>Demo Day — 25 Juin 2026</strong>.
+        </p>
+
+        <div class="meta">
+          <div class="tag"><span class="dot"></span> Version <strong class="mono">v1.0</strong></div>
+          <div class="tag"><span class="dot"></span> Date <strong class="mono">14 Février 2026</strong></div>
+          <div class="tag"><span class="dot"></span> Lead Organizer <strong class="mono">Guillaume SCHNEIDER</strong></div>
+          <div class="tag"><span class="dot"></span> Contact <strong class="mono">contact@gdgutbm.fr</strong></div>
+        </div>
+
+        <div class="note">
+          Ce document définit le cadre officiel du Hackathon Innovation 2026 organisé par le GDG UTBM, afin de garantir une collaboration claire, équilibrée et professionnelle entre étudiants, entreprises partenaires et mentors.
+        </div>
+      </div>
+
+      <div class="card heroSide">
+        <p class="sideTitle">Résumé exécutable</p>
+        <div class="sideBox">
+          <div class="row"><div class="k">Thèmes</div><div class="v">Data · Cloud · XR</div></div>
+          <div class="row"><div class="k">Format</div><div class="v">Prototypes / MVP exploratoires</div></div>
+          <div class="row"><div class="k">IP</div><div class="v">Usage pédagogique + priorité entreprise</div></div>
+          <div class="row"><div class="k">RGPD</div><div class="v">UE 2016/679</div></div>
+          <div class="row"><div class="k">Droit</div><div class="v">Français — Belfort</div></div>
+        </div>
+
+        <div class="callout">
+          <strong>Lecture rapide :</strong> Les étudiants gardent l’usage pédagogique (présentation, portfolio, communication académique).
+          L’entreprise à l’origine du défi dispose d’un droit prioritaire d’exploitation, à exercer sous 3 mois après le Demo Day, avec accord formalisé.
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- TOC -->
+      <aside class="card toc">
+        <h3>Sommaire</h3>
+        <a href="#s1"><span>1.</span> Objet du programme</a>
+        <a href="#s2"><span>2.</span> Participants</a>
+        <a href="#s3"><span>3.</span> Nature des projets</a>
+        <a href="#s4"><span>4.</span> Propriété intellectuelle (IP Framework)</a>
+        <a href="#s5"><span>5.</span> Confidentialité</a>
+        <a href="#s6"><span>6.</span> Clause RGPD</a>
+        <a href="#s7"><span>7.</span> Encadrement & mentorat</a>
+        <a href="#s8"><span>8.</span> Demo Day & évaluation</a>
+        <a href="#s9"><span>9.</span> Communication & image</a>
+        <a href="#s10"><span>10.</span> Responsabilité</a>
+        <a href="#s11"><span>11.</span> Modifications, annulation, exclusion</a>
+        <a href="#s12"><span>12.</span> Droit applicable & litiges</a>
+        <a href="#s13"><span>13.</span> Acceptation</a>
+      </aside>
+
+      <!-- Document -->
+      <main class="card doc">
+        <section id="s1">
+          <h2><span class="secno">1</span> Objet du programme</h2>
+          <p>Le Hackathon Innovation 2026 a pour objectifs de :</p>
+          <ul>
+            <li>connecter étudiants et entreprises autour de problématiques réelles ;</li>
+            <li>encourager l’expérimentation technologique responsable ;</li>
+            <li>produire des prototypes à fort potentiel d’impact (Data, Cloud, XR) ;</li>
+            <li>valoriser les projets et les talents lors du Demo Day.</li>
+          </ul>
+        </section>
+
+        <section id="s2">
+          <h2><span class="secno">2</span> Participants</h2>
+          <p>Le programme réunit :</p>
+          <ul>
+            <li>des équipes étudiantes ;</li>
+            <li>des entreprises partenaires ;</li>
+            <li>des mentors techniques et experts métier ;</li>
+            <li>un jury d’évaluation (Demo Day).</li>
+          </ul>
+          <p>Chaque partie s’engage à adopter une posture respectueuse, professionnelle et collaborative.</p>
+        </section>
+
+        <section id="s3">
+          <h2><span class="secno">3</span> Nature des projets</h2>
+          <p>Les livrables produits dans le cadre du programme sont, par nature :</p>
+          <ul>
+            <li>des prototypes expérimentaux ;</li>
+            <li>des démonstrateurs techniques ;</li>
+            <li>des MVP à vocation exploratoire.</li>
+          </ul>
+          <p>Ils ne constituent pas des produits industriels finalisés.</p>
+        </section>
+
+        <section id="s4">
+          <h2><span class="secno">4</span> Propriété intellectuelle (IP Framework)</h2>
+
+          <div class="hr"></div>
+          <p><strong>4.1 Principe général</strong><br/>
+            Le programme s’inscrit dans une logique d’innovation collaborative. Les modalités d’exploitation post-hackathon doivent être discutées et encadrées.
+          </p>
+
+          <p><strong>4.2 Droits des étudiants (usage pédagogique)</strong><br/>
+            Les étudiants conservent un droit d’usage strictement pédagogique leur permettant :
+          </p>
+          <ul>
+            <li>de présenter le projet (Demo Day, soutenances, portfolio) ;</li>
+            <li>de communiquer sur le projet à des fins académiques (CV, LinkedIn, site personnel) ;</li>
+            <li>de conserver une preuve de travail (captures, slides, extraits non sensibles).</li>
+          </ul>
+          <p>Ce droit n’autorise pas, par défaut, une exploitation commerciale autonome du prototype.</p>
+
+          <p><strong>4.3 Droit prioritaire d’exploitation des entreprises</strong><br/>
+            Par défaut, l’entreprise à l’origine du défi bénéficie d’un droit prioritaire d’exploitation du prototype développé, sous réserve des principes suivants :
+          </p>
+          <ul>
+            <li><strong>Information préalable :</strong> toute intention d’exploitation doit être présentée aux étudiants concernés.</li>
+            <li><strong>Discussion obligatoire :</strong> les modalités (licence, cession, poursuite du développement, stage/embauche, rémunération éventuelle) sont discutées et négociées.</li>
+            <li><strong>Formalisation :</strong> toute exploitation industrielle ou commerciale nécessite un accord formel entre l’entreprise et les étudiants (et, si applicable, l’établissement).</li>
+          </ul>
+          <p>
+            Ce droit prioritaire s’exerce dans un délai de <strong>trois (3) mois</strong> suivant le Demo Day. Au-delà, et en l’absence d’accord formalisé, les parties sont libres d’engager d’autres discussions ou collaborations.
+          </p>
+          <p>Aucune exploitation industrielle ou commerciale ne peut être engagée sans échange explicite avec les étudiants et accord formalisé.</p>
+
+          <p><strong>4.4 Ressources, données et contenus partenaires</strong><br/>
+            Les données, API, documents, briques logicielles ou ressources fournies par une entreprise :
+          </p>
+          <ul>
+            <li>restent la propriété exclusive de l’entreprise ;</li>
+            <li>ne peuvent être utilisées que dans le cadre du programme ;</li>
+            <li>ne peuvent être diffusées, réutilisées ou transférées sans autorisation écrite.</li>
+          </ul>
+          <p>Un accord de confidentialité (NDA) peut être mis en place si nécessaire.</p>
+        </section>
+
+        <section id="s5">
+          <h2><span class="secno">5</span> Confidentialité</h2>
+          <p>Toutes les parties s’engagent à :</p>
+          <ul>
+            <li>préserver la confidentialité des informations sensibles partagées ;</li>
+            <li>ne pas divulguer de données industrielles ou internes sans autorisation ;</li>
+            <li>respecter les consignes de diffusion (public / interne / confidentiel).</li>
+          </ul>
+        </section>
+
+        <section id="s6">
+          <h2><span class="secno">6</span> Clause RGPD — Protection des données personnelles</h2>
+          <p>Le Hackathon Innovation 2026 respecte le Règlement (UE) 2016/679 (RGPD) et les exigences applicables en matière de protection des données.</p>
+
+          <p><strong>6.1 Données collectées</strong><br/>
+            Les données collectées via les formulaires (nom, prénom, email, fonction, entreprise, téléphone si fourni) sont utilisées exclusivement pour :
+          </p>
+          <ul>
+            <li>l’organisation et la coordination du programme ;</li>
+            <li>la communication opérationnelle liée au Hackathon ;</li>
+            <li>le suivi des partenaires et intervenants.</li>
+          </ul>
+
+          <p><strong>6.2 Base et durée de conservation</strong><br/>
+            Les données sont traitées sur la base de l’intérêt légitime lié à l’organisation du programme et/ou du consentement lorsque requis.
+            Elles sont conservées pendant la durée nécessaire au déroulement du Hackathon, puis archivées ou supprimées selon les besoins administratifs.
+          </p>
+
+          <p><strong>6.3 Droits des personnes</strong><br/>
+            Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et d’effacement ; d’opposition et de limitation du traitement ; et de portabilité lorsque applicable.
+            Toute demande peut être adressée à : <a href="mailto:contact@gdgutbm.fr">contact@gdgutbm.fr</a>
+          </p>
+
+          <p><strong>6.4 Données dans les projets</strong><br/>
+            Les projets ne doivent pas inclure de données personnelles sensibles sans :
+          </p>
+          <ul>
+            <li>consentement explicite des personnes concernées ;</li>
+            <li>encadrement juridique approprié ;</li>
+            <li>validation préalable de l’entreprise et de l’organisation.</li>
+          </ul>
+        </section>
+
+        <section id="s7">
+          <h2><span class="secno">7</span> Encadrement et mentorat</h2>
+          <p>Les mentors interviennent à titre consultatif. Ils :</p>
+          <ul>
+            <li>apportent une expertise technique et/ou métier ;</li>
+            <li>aident à lever des blocages ;</li>
+            <li>contribuent à l’exigence technique et à la qualité de restitution.</li>
+          </ul>
+          <p>Les décisions techniques finales relèvent des équipes étudiantes.</p>
+        </section>
+
+        <section id="s8">
+          <h2><span class="secno">8</span> Demo Day et évaluation</h2>
+          <p>Le Demo Day est une restitution publique des prototypes. L’évaluation peut prendre en compte :</p>
+          <ul>
+            <li>pertinence du problème et valeur apportée ;</li>
+            <li>qualité technique et robustesse ;</li>
+            <li>innovation et différenciation ;</li>
+            <li>faisabilité et potentiel d’industrialisation ;</li>
+            <li>clarté de la présentation et démonstration.</li>
+          </ul>
+        </section>
+
+        <section id="s9">
+          <h2><span class="secno">9</span> Communication et image</h2>
+          <p>
+            Le GDG UTBM peut communiquer sur le programme et les projets (site, réseaux, supports officiels),
+            et diffuser des images/captations du Demo Day.
+          </p>
+          <p>
+            Toute restriction (confidentialité, droits d’image, éléments non publiables) doit être signalée en amont.
+          </p>
+        </section>
+
+        <section id="s10">
+          <h2><span class="secno">10</span> Responsabilité</h2>
+          <p>Le GDG UTBM agit en qualité d’organisateur académique. Il ne peut être tenu responsable :</p>
+          <ul>
+            <li>d’une exploitation commerciale ultérieure des prototypes ;</li>
+            <li>de la relation contractuelle entre une entreprise et une équipe étudiante ;</li>
+            <li>d’un usage non conforme des livrables après la fin du programme.</li>
+          </ul>
+        </section>
+
+        <section id="s11">
+          <h2><span class="secno">11</span> Modification, annulation, exclusion</h2>
+          <p>Le GDG UTBM se réserve le droit de :</p>
+          <ul>
+            <li>ajuster le calendrier ou le format en cas de contraintes majeures ;</li>
+            <li>refuser ou interrompre un défi non conforme ;</li>
+            <li>exclure un participant en cas de comportement inapproprié ou non-respect du cadre.</li>
+          </ul>
+
+          <div class="note">
+            La participation au Hackathon Innovation 2026 ne constitue ni un contrat de travail, ni une relation commerciale,
+            ni une relation de prestation entre les participants et le GDG UTBM. Toute collaboration ultérieure devra faire l’objet
+            d’un accord distinct et formalisé.
+          </div>
+        </section>
+
+        <section id="s12">
+          <h2><span class="secno">12</span> Droit applicable et règlement des litiges</h2>
+          <p>Le présent document est régi par le droit français.</p>
+          <p>
+            En cas de différend relatif à son interprétation ou à son application, les parties s’engagent à rechercher une solution amiable.
+            À défaut d’accord amiable, les tribunaux compétents seront ceux du ressort de Belfort.
+          </p>
+        </section>
+
+        <section id="s13">
+          <h2><span class="secno">13</span> Acceptation</h2>
+          <p>Toute participation au Hackathon Innovation 2026 implique l’acceptation pleine et entière du présent document.</p>
+          <div class="note">
+            <strong>Keep pushing content. Keep building community.</strong><br/>
+            Google Developer Group UTBM — Communauté technologique indépendante basée à l’UTBM.<br/>
+            Contact : <span class="mono">gdgutbm@gmail.com</span> · Réseaux : <span class="mono">@GDG_UTBM</span>
+          </div>
+        </section>
+
+        <div class="footer">
+          <div class="small">
+            © GDG UTBM — Hackathon Innovation 2026 · <span class="mono">v1.0 · 14 Février 2026</span>
+          </div>
+          <div class="small">
+            Source officielle : <a href="./reglement-2026.pdf" target="_blank" rel="noopener">PDF du règlement</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
